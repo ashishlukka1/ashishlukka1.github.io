@@ -4,7 +4,6 @@ import {
   Routes,
   Route,
   Navigate,
-  useLocation,
 } from "react-router-dom";
 import { Analytics } from "@vercel/analytics/react";
 
@@ -36,7 +35,8 @@ import TypoWork from "./components/typography/Work/Work";
 import Lumora from "./components/typography/Lumora/Lumora";
 import TypoAbout from "./components/typography/About/About";
 import ScrollToTop from "./components/typography/ScrollToTop";
-import IOSCursor from "./components/typography/Cursor/BlobCursor";
+import CleanPortfolio from "./components/clean/CleanPortfolio";
+import CleanProjectDetail from "./components/clean/CleanProjectDetail";
 
 // === Loading Spinner ===
 function LoadingOverlay() {
@@ -76,8 +76,6 @@ function LoadingOverlay() {
 function TypographyLayout({ children }) {
   return (
     <div className="">
-      <IOSCursor />
-
       <NewNavbar />
 
       {children}
@@ -117,7 +115,6 @@ function BentoLayout({ children }) {
 }
 
 function App() {
-  const location = useLocation();
   const [isLoading, setIsLoading] = useState(false);
   window.setAppLoading = setIsLoading;
 
@@ -190,6 +187,10 @@ function App() {
             </TypographyLayout>
           }
         />
+
+        {/* Clean Portfolio */}
+        <Route path="/clean" element={<CleanPortfolio />} />
+        <Route path="/clean/:projectName" element={<CleanProjectDetail />} />
 
         {/* Original Portfolio */}
         <Route
