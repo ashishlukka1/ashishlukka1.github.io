@@ -36,7 +36,6 @@ import Lumora from "./components/typography/Lumora/Lumora";
 import TypoAbout from "./components/typography/About/About";
 import ScrollToTop from "./components/typography/ScrollToTop";
 import CleanPortfolio from "./components/clean/CleanPortfolio";
-import CleanProjectDetail from "./components/clean/CleanProjectDetail";
 
 // === Loading Spinner ===
 function LoadingOverlay() {
@@ -122,9 +121,12 @@ function App() {
     <>
       <ScrollToTop />
       <Routes>
+        {/* Clean Portfolio — main */}
+        <Route path="/" element={<CleanPortfolio />} />
+
         {/* Typography Portfolio */}
         <Route
-          path="/"
+          path="/design"
           element={
             <TypographyLayout>
               <Home setLoading={setIsLoading} />
@@ -132,7 +134,7 @@ function App() {
           }
         />
         <Route
-          path="/digital-academic-library"
+          path="/design/digital-academic-library"
           element={
             <TypographyLayout>
               <Library setLoading={setIsLoading} />
@@ -140,7 +142,7 @@ function App() {
           }
         />
         <Route
-          path="/olive-crypto-systems"
+          path="/design/olive-crypto-systems"
           element={
             <TypographyLayout>
               <Olive setLoading={setIsLoading} />
@@ -148,7 +150,7 @@ function App() {
           }
         />
         <Route
-          path="/draft-blogapp"
+          path="/design/draft-blogapp"
           element={
             <TypographyLayout>
               <Draft setLoading={setIsLoading} />
@@ -156,7 +158,7 @@ function App() {
           }
         />
         <Route
-          path="/campus-hall-scheduler"
+          path="/design/campus-hall-scheduler"
           element={
             <TypographyLayout>
               <Seminar setLoading={setIsLoading} />
@@ -164,7 +166,7 @@ function App() {
           }
         />
         <Route
-          path="/lumora"
+          path="/design/lumora"
           element={
             <TypographyLayout>
               <Lumora setLoading={setIsLoading} />
@@ -172,7 +174,7 @@ function App() {
           }
         />
         <Route
-          path="/work"
+          path="/design/work"
           element={
             <TypographyLayout>
               <TypoWork setLoading={setIsLoading} />
@@ -180,17 +182,13 @@ function App() {
           }
         />
         <Route
-          path="/about"
+          path="/design/about"
           element={
             <TypographyLayout>
               <TypoAbout setLoading={setIsLoading} />
             </TypographyLayout>
           }
         />
-
-        {/* Clean Portfolio */}
-        <Route path="/clean" element={<CleanPortfolio />} />
-        <Route path="/clean/:projectName" element={<CleanProjectDetail />} />
 
         {/* Original Portfolio */}
         <Route

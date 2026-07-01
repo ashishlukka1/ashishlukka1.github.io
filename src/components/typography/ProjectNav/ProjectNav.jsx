@@ -12,11 +12,11 @@ export default function ProjectNav() {
   const navigate = useNavigate();
 
   const projects = [
-    { src: OliveCryptoImage, alt: "Olive Crypto Systems", path: "/olive-crypto-systems" },
-    { src: LibraryImage, alt: "Digital Academic Library", path: "/digital-academic-library" },
-    { src: BlogAppImage, alt: "Draft BlogApp", path: "/draft-blogapp" },
-    { src: SeminarHallImage, alt: "Campus Hall Scheduler", path: "/campus-hall-scheduler" },
-    { src: LumoraImage, alt: "Lumora", path: "/lumora" },
+    { src: OliveCryptoImage, alt: "Olive Crypto Systems", path: "/design/olive-crypto-systems" },
+    { src: LibraryImage, alt: "Digital Academic Library", path: "/design/digital-academic-library" },
+    { src: BlogAppImage, alt: "Draft BlogApp", path: "/design/draft-blogapp" },
+    { src: SeminarHallImage, alt: "Campus Hall Scheduler", path: "/design/campus-hall-scheduler" },
+    { src: LumoraImage, alt: "Lumora", path: "/design/lumora" },
   ];
 
   // find index of active project

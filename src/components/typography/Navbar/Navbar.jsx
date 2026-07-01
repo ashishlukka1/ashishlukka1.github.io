@@ -6,11 +6,11 @@ import "./Navbar.css";
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
-  const isOlivePage = location.pathname === "/olive-crypto-systems";
-  const isLibraryPage = location.pathname === "/digital-academic-library";
-  const isDraftBlogApp = location.pathname === "/draft-blogapp";
-  const isSeminarPage = location.pathname === "/campus-hall-scheduler";
-  const isLumoraPage = location.pathname === "/lumora";
+  const isOlivePage = location.pathname === "/design/olive-crypto-systems";
+  const isLibraryPage = location.pathname === "/design/digital-academic-library";
+  const isDraftBlogApp = location.pathname === "/design/draft-blogapp";
+  const isSeminarPage = location.pathname === "/design/campus-hall-scheduler";
+  const isLumoraPage = location.pathname === "/design/lumora";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -53,13 +53,13 @@ const Navbar = () => {
       }`}
     >
       <div className="navbar-content">
-        <NavLink to="/" className="logo-text">
+        <NavLink to="/design" className="logo-text">
             <TiSpiral  size={35} color="grey"/>
         </NavLink>
         <ul className="nav-links1">
           <li>
             <NavLink
-              to="/work"
+              to="/design/work"
               className={({ isActive }) => (isActive ? "active" : "")}
             >
               WORK
@@ -67,7 +67,7 @@ const Navbar = () => {
           </li>
           <li>
             <NavLink
-              to="/about"
+              to="/design/about"
               className={({ isActive }) => (isActive ? "active" : "")}
             >
               ABOUT

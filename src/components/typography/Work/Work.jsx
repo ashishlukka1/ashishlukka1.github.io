@@ -33,7 +33,7 @@ export default function Work() {
   }, []);
 
   const handleImageClick = (alt) => {
-    navigate(`/${alt.replace(/\s+/g, "-").toLowerCase()}`);
+    navigate(`/design/${alt.replace(/\s+/g, "-").toLowerCase()}`);
   };
 
   return (

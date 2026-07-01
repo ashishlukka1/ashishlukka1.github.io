@@ -1,28 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { ArrowUpRight, Github, Linkedin, Moon, Sun, Mail } from "lucide-react";
 import "./CleanPortfolio.css";
-import profileImage from "../../assets/about/image1.webp";
 
 const resumeUrl =
-  "https://drive.google.com/file/d/1RyuWviYavfKwAKXNPUavKwIr0cZufC1Y/view?usp=sharing";
-
-const navItems = [
-  { label: "about", href: "#about" },
-  { label: "experience", href: "#experience" },
-  { label: "projects", href: "#projects" },
-  { label: "papers", href: "#papers" },
-  { label: "blogs", href: "#blogs" },
-  { label: "resume", href: resumeUrl, external: true },
-];
+  "https://drive.google.com/file/d/1ewA0xWqfyDv7X9TrqRSCvW6Nxjyspj-1/view?usp=sharing";
 
 const skills = [
-  "react",
-  "node.js",
-  "python",
-  "machine learning",
-  "rag pipelines",
-  "fine-tuning",
+  "java","dsa","MERN","ml/dl",
 ];
 
 const experience = [
@@ -31,253 +15,174 @@ const experience = [
     place: "olive crypto systems",
     time: "jun 2025 – jul 2025",
     points: [
-      " - built a mern-based internal training platform with role-based dashboards for employees, trainers, and admins",
-      " - integrated skill assessments, progress tracking, certificates, and audit-ready compliance logs",
+      "architected and developed a scalable MERN-based training platform handling 500+ concurrent users, with RESTful APIs optimized for a 40% reduction in response time and Microsoft OAuth/SSO-based role authentication for secure access control.",
+      "built an audit-ready compliance system with real-time activity monitoring and an automated certification engine using a 3-tier validation hierarchy (admin, checker, employee) for structured course approval and issuance.",
     ],
-  }
+  },
 ];
 
 const projects = [
   {
-    name: "about",
-    path: "/clean/about",
-    description: "my background, skills, and experience",
+    name: "parameter efficient domain adaptation on whisper",
+    desc: "whisper ASR fine-tuned with LoRA using synthetic speech data for ASR domain adaptation — 29.3% relative WER reduction on weather, 19.9% on music, 4.4% on pports",
+    github: "https://github.com/Janjirala-Srikar/Lora_Whisper",
   },
   {
-    name: "home",
-    path: "/clean/home",
-    description: "collection of my recent projects and work",
+    name: "olive skill test",
+    desc: "internal training platform built during internship at olive crypto systems",
+    github: "https://github.com/ashishlukka1/skill-caravan",
+    demo: "https://olive-skill-test.vercel.app/",
   },
   {
-    name: "library",
-    path: "/clean/library",
-    description: "digital academic library platform",
+    name: "sales ticket",
+    desc: "turns support tickets into revenue intelligence — an AI platform that extracts structured signals from Zendesk conversations using deterministic classification and graph-based memory, paired with a RAG-based copilot for context-aware, conversational insight.",
+    github: "https://github.com/ashishlukka1/sales-ticket",
+    demo: "https://salesticket.buildwithlumora.tech",
   },
   {
-    name: "lumora",
-    path: "/clean/lumora",
-    description: "web design and development",
+    name: "quantera",
+    desc: "ocr + llm pipeline that extracts structured data from medical reports and answers questions via a rag-powered conversational assistant",
+    github: "https://github.com/ashishlukka1/lab-report-agent",
   },
   {
-    name: "olive",
-    path: "/clean/olive",
-    description: "crypto systems internal platform",
-  },
-  {
-    name: "seminar",
-    path: "/clean/seminar",
-    description: "campus event scheduling system",
+    name: "digital academic library",
+    desc: "centralized mern platform for academic resource sharing with role-based access, discussion forums, book booking, and a gemini-powered chatbot — won 1st at webathon 3.0",
+    github: "https://github.com/ashishlukka1/Digital-Academic-Library",
+    demo: "https://digital-academic-library.vercel.app",
   },
   {
     name: "draft",
-    path: "/clean/draft",
-    description: "blogging platform with rich features",
+    desc: "full mern blog platform with role-based access (admin/author/user), clerk auth, and a rich text editor",
+    github: "https://github.com/ashishlukka1/draft-blogapp",
+    demo: "https://draft-blogapp.vercel.app",
   },
   {
-    name: "work",
-    path: "/clean/work",
-    description: "project showcase and portfolio",
+    name: "lumora",
+    desc: "web platform giving college students clerk-authenticated access to curated mern stack learning videos",
+    github: "https://github.com/ashishlukka1/lumora",
+    demo: "https://lumora-stack.netlify.app",
   },
+  {
+    name: "seminar hall",
+    desc: "web app for booking seminar halls at vnrvjiet",
+    github: "https://github.com/ashishlukka1/seminar-hall",
+    demo: "https://vnrvjiet-seminar-hall.vercel.app",
+  }
 ];
 
-const papers = [
-  {
-    venue: "Under review",
-    title:
-      "Domain Adaptation for ASR via Synthetic Data Augmentation: A LoRA Fine-tuning Study on Whisper",
-    description:
-      "replication of the DAS framework using Llama3-8B and Tacotron2-DDC for synthetic data generation, evaluated on Common Voice 17.0 with WER reduction as the key metric",
-    href: null,
-  },
-];
-
-const blogs = [
-  {
-    title: "technical blogs",
-    description: "notes on ml, full-stack architecture, and applied ai",
-    href: null,
-  },
-  {
-    title: "guides",
-    description: "walkthroughs on tools, workflows, and placement prep",
-    href: null,
-  },
-];
+const sections = ["about", "experience", "projects"];
 
 export default function CleanPortfolio() {
-  const [theme, setTheme] = useState("dark");
-  const nextTheme = theme === "dark" ? "light" : "dark";
+  const [active, setActive] = useState("about");
+  const [showAll, setShowAll] = useState(false);
+  const sectionRefs = useRef({});
+
+  useEffect(() => {
+    const observers = sections.map((id) => {
+      const el = sectionRefs.current[id];
+      if (!el) return null;
+      const obs = new IntersectionObserver(
+        ([entry]) => { if (entry.isIntersecting) setActive(id); },
+        { threshold: 0.4 }
+      );
+      obs.observe(el);
+      return obs;
+    });
+    return () => observers.forEach((o) => o?.disconnect());
+  }, []);
+
+  const scrollTo = (id) => {
+    sectionRefs.current[id]?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
-    <main className={`clean-page clean-${theme}`}>
-      <aside className="clean-sidebar" aria-label="Portfolio navigation">
-        <div className="clean-profile">
-          <img src={profileImage} alt="Ashish Lukka" />
-          <Link className="clean-name" to="/">
-            ashish lukka
-          </Link>
-          <p className="clean-role">it student & ml enthusiast</p>
-        </div>
+    <div className="cp-page">
+      <aside className="cp-sidebar">
+        <Link to="/design" className="cp-name">ashish lukka</Link>
 
-        <nav className="clean-nav">
-          {navItems.map((item) => (
+        <nav className="cp-nav">
+          {sections.map((id) => (
             <a
-              key={item.href}
-              href={item.href}
-              target={item.external ? "_blank" : undefined}
-              rel={item.external ? "noopener noreferrer" : undefined}
+              key={id}
+              href={`#${id}`}
+              className={active === id ? "cp-active" : ""}
+              onClick={(e) => { e.preventDefault(); scrollTo(id); }}
             >
-              {item.label}
-              {item.external && <ArrowUpRight size={14} strokeWidth={2} />}
+              {id}
             </a>
           ))}
+          <a href={resumeUrl} target="_blank" rel="noopener noreferrer">resume</a>
         </nav>
 
-        <button
-          className="clean-theme-toggle"
-          type="button"
-          onClick={() => setTheme(nextTheme)}
-          aria-label={`Switch to ${nextTheme} mode`}
-        >
-          <span>{nextTheme} mode</span>
-          {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
-        </button>
 
-        <div className="clean-social-links" aria-label="Social links">
-          <a
-            href="https://github.com/ashishlukka1"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="GitHub"
-          >
-            <Github size={19} />
-          </a>
-          <a
-            href="https://www.linkedin.com/in/ashish-lukka/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="LinkedIn"
-          >
-            <Linkedin size={19} />
-          </a>
-          <a href="mailto:ashishlukka@gmail.com" aria-label="Email">
-            <Mail size={19} />
-          </a>
+        <div className="cp-sidebar-links">
+          <a href="https://www.linkedin.com/in/ashish-lukka/" target="_blank" rel="noopener noreferrer">linkedin</a>
+          <a href="https://github.com/ashishlukka1" target="_blank" rel="noopener noreferrer">github</a>
         </div>
-
-        <p className="clean-footer">© 2026 ashish lukka</p>
       </aside>
 
-      <div className="clean-content">
-        {/* ── About ── */}
-        <section className="clean-section" id="about">
-          <h1>about me</h1>
-          <div className="clean-copy">
-            <p>
-              i am pre-final year student, studying information technology at VNRVJIET, hyderabad.
-            </p>
-            <p>
-              currently, exploring agenti ai and cloud.
-            </p>
-          </div>
-          <div className="clean-tags">
-            {skills.map((skill) => (
-              <span key={skill}>{skill}</span>
-            ))}
+      <main className="cp-content">
+        {/* About */}
+        <section
+          id="about"
+          className="cp-section cp-about"
+          ref={(el) => (sectionRefs.current["about"] = el)}
+        >
+          <div className="cp-section-label">about</div>
+          <p>pre-final year information technology student at vnrvjiet, hyderabad.</p>
+          <p>currently exploring machine-learning and cloud. building things on the web.</p>
+          <div className="cp-tags">
+            {skills.map((s) => <span key={s}>{s}</span>)}
           </div>
         </section>
 
-        {/* ── Experience ── */}
-        <section className="clean-section" id="experience">
-          <h2>experience</h2>
-          <div className="clean-timeline">
-            {experience.map((job) => (
-              <article key={job.role}>
-                <span className="clean-dot" />
-                <div>
-                  <div className="clean-row">
-                    <h3>{job.role}</h3>
-                    <time>{job.time}</time>
-                  </div>
-                  <p className="clean-place">{job.place}</p>
-                  {job.points.map((point) => (
-                    <p key={point}>{point}</p>
-                  ))}
+        {/* Experience */}
+        <section
+          id="experience"
+          className="cp-section"
+          ref={(el) => (sectionRefs.current["experience"] = el)}
+        >
+          <div className="cp-section-label">experience</div>
+          {experience.map((job) => (
+            <div className="cp-exp-item" key={job.role}>
+              <div className="cp-exp-row">
+                <span className="cp-exp-role">{job.role}</span>
+                <span className="cp-exp-time">{job.time}</span>
+              </div>
+              <div className="cp-exp-place">{job.place}</div>
+              {job.points.map((p) => <div className="cp-exp-point" key={p}>— {p}</div>)}
+            </div>
+          ))}
+        </section>
+
+        {/* Projects */}
+        <section
+          id="projects"
+          className="cp-section"
+          ref={(el) => (sectionRefs.current["projects"] = el)}
+        >
+          <div className="cp-section-label">projects</div>
+          {(showAll ? projects : projects.slice(0, 4)).map((p) => (
+            <div key={p.name} className="cp-project-item">
+              <div className="cp-project-row">
+                <div className="cp-project-name">{p.name}</div>
+                <div className="cp-project-links">
+                  {p.github && <a href={p.github} target="_blank" rel="noopener noreferrer">github</a>}
+                  {p.demo && <a href={p.demo} target="_blank" rel="noopener noreferrer">demo ↗</a>}
                 </div>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        {/* ── Projects ── */}
-        <section className="clean-section" id="projects">
-          <h2>projects</h2>
-          <div className="clean-list">
-            {projects.map((project) => (
-              <Link
-                className="clean-list-item"
-                key={project.name}
-                to={project.path}
-              >
-                <strong>{project.name}</strong>
-                <span>{project.description}</span>
-              </Link>
-            ))}
-          </div>
-        </section>
-
-        {/* ── Papers ── */}
-        <section className="clean-section" id="papers">
-          <h2>papers</h2>
-          <div className="clean-list">
-            {papers.map((paper) => (
-              <article className="clean-list-item clean-paper" key={paper.title}>
-                <span className="clean-venue">{paper.venue}</span>
-                {paper.href ? (
-                  <a
-                    href={paper.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="clean-paper-title"
-                  >
-                    {paper.title}
-                    <ArrowUpRight size={13} strokeWidth={2} />
-                  </a>
-                ) : (
-                  <strong className="clean-paper-title">{paper.title}</strong>
-                )}
-                <span>{paper.description}</span>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        {/* ── Blogs ── */}
-        <section className="clean-section" id="blogs">
-          <h2>blogs</h2>
-          <div className="clean-list">
-            {blogs.map((blog) =>
-              blog.href ? (
-                <a
-                  className="clean-list-item"
-                  key={blog.title}
-                  href={blog.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <strong>{blog.title}</strong>
-                  <span>{blog.description}</span>
-                </a>
-              ) : (
-                <article className="clean-list-item" key={blog.title}>
-                  <strong>{blog.title}</strong>
-                  <span>{blog.description}</span>
-                </article>
-              )
+              </div>
+              <div className="cp-project-desc">{p.desc}</div>
+            </div>
+          ))}
+          <button className="cp-show-more" onClick={() => setShowAll(!showAll)}>
+            {showAll ? (
+              <><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 9L1 4h10L6 9z" fill="currentColor"/></svg> show less</>
+            ) : (
+              <><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 3l5 5H1l5-5z" fill="currentColor"/></svg> show more</>
             )}
-          </div>
+          </button>
         </section>
-      </div>
-    </main>
+      </main>
+    </div>
   );
 }
