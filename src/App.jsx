@@ -36,6 +36,7 @@ import Lumora from "./components/typography/Lumora/Lumora";
 import TypoAbout from "./components/typography/About/About";
 import ScrollToTop from "./components/typography/ScrollToTop";
 import CleanPortfolio from "./components/clean/CleanPortfolio";
+import CodingProfiles from "./components/clean/CodingProfiles";
 
 // === Loading Spinner ===
 function LoadingOverlay() {
@@ -123,6 +124,7 @@ function App() {
       <Routes>
         {/* Clean Portfolio — main */}
         <Route path="/" element={<CleanPortfolio />} />
+        <Route path="/profiles" element={<CodingProfiles />} />
 
         {/* Typography Portfolio */}
         <Route

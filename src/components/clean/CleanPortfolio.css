@@ -164,18 +164,23 @@
   padding: 0.8rem 0.5rem;
   margin-bottom: 0.5rem;
   cursor: pointer;
-  transition: background 120ms ease;
+  transition: background 120ms ease, transform 120ms ease;
   border-radius: 4px;
 }
 
-.cp-project-item:nth-child(1):hover { background: rgb(45, 28, 28); }
-.cp-project-item:nth-child(2):hover { background: rgb(28, 42, 28); }
-.cp-project-item:nth-child(3):hover { background: rgb(28, 28, 50); }
-.cp-project-item:nth-child(4):hover { background: rgb(48, 42, 22); }
-.cp-project-item:nth-child(5):hover { background: rgb(42, 28, 48); }
-.cp-project-item:nth-child(6):hover { background: rgb(22, 42, 42); }
-.cp-project-item:nth-child(7):hover { background: rgb(48, 36, 22); }
-.cp-project-item:nth-child(8):hover { background: rgb(28, 45, 28); }
+.cp-project-item:hover {
+  transform: translateX(2px);
+}
+
+.cp-project-item-1:hover { background: rgb(45, 28, 28); }
+.cp-project-item-2:hover { background: rgb(28, 42, 28); }
+.cp-project-item-3:hover { background: rgb(28, 28, 50); }
+.cp-project-item-4:hover { background: rgb(48, 42, 22); }
+.cp-project-item-5:hover { background: rgb(42, 28, 48); }
+.cp-project-item-6:hover { background: rgb(22, 42, 42); }
+.cp-project-item-7:hover { background: rgb(48, 36, 22); }
+.cp-project-item-8:hover { background: rgb(28, 45, 28); }
+.cp-project-item-9:hover { background: rgb(36, 28, 36); }
 
 .cp-project-row {
   display: flex;
@@ -249,6 +254,51 @@
 
 .cp-show-more:hover {
   color: var(--cp-bright);
+}
+
+.cp-profile-item {
+  padding: 0.8rem 0.5rem;
+  margin-bottom: 0.5rem;
+  transition: background 120ms ease, transform 120ms ease;
+  border-radius: 4px;
+}
+
+.cp-profile-item:hover {
+  background: rgba(255, 255, 255, 0.04);
+  transform: translateX(2px);
+}
+
+.cp-profile-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.cp-profile-name {
+  color: var(--cp-text);
+  font-size: 18px;
+  text-transform: lowercase;
+}
+
+.cp-profile-row a {
+  color: var(--cp-dim);
+  font-size: 15px;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  transition: color 120ms ease;
+}
+
+.cp-profile-row a:hover {
+  color: var(--cp-bright);
+}
+
+.cp-profile-desc {
+  color: var(--cp-dim);
+  font-size: 14px;
+  margin-top: 0.2rem;
 }
 
 .cp-contact {
@@ -352,6 +402,12 @@
   }
 
   .cp-project-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+  }
+
+  .cp-profile-row {
     flex-direction: column;
     align-items: flex-start;
     gap: 0.3rem;

@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { LuArrowUpRight, LuArrowRight } from "react-icons/lu";
+import resumePdf from "../../assets/Ashish_s_Resume.pdf";
 import "./CleanPortfolio.css";
 
-const resumeUrl =
-  "https://drive.google.com/file/d/1ewA0xWqfyDv7X9TrqRSCvW6Nxjyspj-1/view?usp=sharing";
+const resumeUrl = resumePdf;
 
 const skills = [
   "java","dsa","MERN","ml/dl",
@@ -25,8 +25,13 @@ const experience = [
 const projects = [
   {
     name: "parameter efficient domain adaptation on whisper",
-    desc: "whisper ASR fine-tuned with LoRA using synthetic speech data for ASR domain adaptation — 29.3% relative WER reduction on weather, 19.9% on music, 4.4% on pports",
+    desc: "whisper ASR fine-tuned with LoRA using synthetic speech data for ASR domain adaptation — 29.3% relative WER reduction on weather, 19.9% on music, 4.4% on sports",
     github: "https://github.com/Janjirala-Srikar/Lora_Whisper",
+  },
+  {
+    name: "job queue engine",
+    desc: "built a distributed job queue with lease-based locking, exponential backoff, and dead-letter recovery — crash-safe with zero double-processing under load",
+    github: "https://github.com/ashishlukka1/job-queue-engine",
   },
   {
     name: "olive skill test",
@@ -119,6 +124,7 @@ export default function CleanPortfolio() {
         <div className="cp-sidebar-links">
           <a href="https://www.linkedin.com/in/ashish-lukka/" target="_blank" rel="noopener noreferrer">linkedin</a>
           <a href="https://github.com/ashishlukka1" target="_blank" rel="noopener noreferrer">github</a>
+          <Link to="/profiles">coding profiles</Link>
         </div>
       </aside>
 
@@ -163,8 +169,8 @@ export default function CleanPortfolio() {
           ref={(el) => (sectionRefs.current["projects"] = el)}
         >
           <div className="cp-section-label">projects</div>
-          {(showAll ? projects : projects.slice(0, 4)).map((p) => (
-            <div key={p.name} className="cp-project-item">
+          {(showAll ? projects : projects.slice(0, 4)).map((p, index) => (
+            <div key={p.name} className={`cp-project-item cp-project-item-${index + 1}`}>
               <div className="cp-project-row">
                 <div className="cp-project-name">{p.name}</div>
                 <div className="cp-project-links">
