@@ -122,7 +122,7 @@
   background: var(--cp-tag-bg);
   color: var(--cp-tag-text);
   border: 1px solid rgba(160, 160, 255, 0.25);
-  padding: 0.2rem 1.2rem;
+  padding: 0.15rem 1.1rem;
   font-size: 15px;
   border-radius: 18px;
 }
@@ -210,11 +210,26 @@
   color: var(--cp-dim);
   font-size: 15px;
   white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
   transition: color 120ms ease;
 }
 
 .cp-project-links a:hover {
   color: var(--cp-bright);
+}
+
+.cp-nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.cp-project-links a svg,
+.cp-nav a svg {
+  position: relative;
+  top: 0.8px;
 }
 
 .cp-show-more {
@@ -236,10 +251,53 @@
   color: var(--cp-bright);
 }
 
-/* ── Responsive ── */
+.cp-contact {
+  text-align: center;
+  padding: 2rem 0 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  gap: 0.6rem;
+}
+
+.cp-contact-sep {
+  color: var(--cp-dim);
+}
+
+.cp-contact-mail {
+  cursor: pointer;
+  color: rgb(190, 190, 190);
+  font-size: 17px;
+  transition: color 120ms ease;
+}
+
+.cp-copied-toast {
+  position: fixed;
+  top: 1.2rem;
+  right: 1.2rem;
+  background: var(--cp-tag-bg);
+  color: var(--cp-tag-text);
+  border: 1px solid rgba(160, 160, 255, 0.25);
+  font-size: 15px;
+  padding: 0.4rem 1rem;
+  border-radius: 18px;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity 150ms ease, transform 150ms ease;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.cp-copied-toast.cp-toast-show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 @media (max-width: 768px) {
   .cp-page {
     grid-template-columns: 1fr;
+    font-size: 16px;
+    line-height: 26px;
   }
 
   .cp-sidebar {
@@ -276,6 +334,47 @@
   }
 
   .cp-content {
-    padding: 2rem 1.5rem;
+    padding: 2rem 1.25rem;
+  }
+
+  .cp-section-label {
+    font-size: 20px;
+    margin-bottom: 1.2rem;
+  }
+
+  .cp-exp-row {
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+
+  .cp-exp-time {
+    font-size: 13px;
+  }
+
+  .cp-project-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+  }
+
+  .cp-project-name {
+    font-size: 16px;
+  }
+
+  .cp-project-links {
+    gap: 0.8rem;
+  }
+
+  .cp-project-links a {
+    font-size: 13px;
+  }
+
+  .cp-project-desc {
+    font-size: 13px;
+  }
+
+  .cp-tags span {
+    font-size: 13px;
+    padding: 0.2rem 0.9rem;
   }
 }

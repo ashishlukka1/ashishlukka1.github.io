@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import { LuArrowUpRight, LuArrowRight } from "react-icons/lu";
 import "./CleanPortfolio.css";
 
 const resumeUrl =
@@ -78,17 +79,17 @@ export default function CleanPortfolio() {
   const sectionRefs = useRef({});
 
   useEffect(() => {
-    const observers = sections.map((id) => {
-      const el = sectionRefs.current[id];
-      if (!el) return null;
-      const obs = new IntersectionObserver(
-        ([entry]) => { if (entry.isIntersecting) setActive(id); },
-        { threshold: 0.4 }
-      );
-      obs.observe(el);
-      return obs;
-    });
-    return () => observers.forEach((o) => o?.disconnect());
+    const onScroll = () => {
+      const mid = window.innerHeight * 0.4;
+      let current = sections[0];
+      for (const id of sections) {
+        const el = sectionRefs.current[id];
+        if (el && el.getBoundingClientRect().top <= mid) current = id;
+      }
+      setActive(current);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   const scrollTo = (id) => {
@@ -111,7 +112,7 @@ export default function CleanPortfolio() {
               {id}
             </a>
           ))}
-          <a href={resumeUrl} target="_blank" rel="noopener noreferrer">resume</a>
+          <a href={resumeUrl} target="_blank" rel="noopener noreferrer">resume <LuArrowUpRight size={12} /></a>
         </nav>
 
 
@@ -158,7 +159,7 @@ export default function CleanPortfolio() {
         {/* Projects */}
         <section
           id="projects"
-          className="cp-section"
+          className="cp-section cp-section-projects"
           ref={(el) => (sectionRefs.current["projects"] = el)}
         >
           <div className="cp-section-label">projects</div>
@@ -168,7 +169,7 @@ export default function CleanPortfolio() {
                 <div className="cp-project-name">{p.name}</div>
                 <div className="cp-project-links">
                   {p.github && <a href={p.github} target="_blank" rel="noopener noreferrer">github</a>}
-                  {p.demo && <a href={p.demo} target="_blank" rel="noopener noreferrer">demo ↗</a>}
+                  {p.demo && <a href={p.demo} target="_blank" rel="noopener noreferrer">demo <LuArrowUpRight size={12} /></a>}
                 </div>
               </div>
               <div className="cp-project-desc">{p.desc}</div>
@@ -176,12 +177,28 @@ export default function CleanPortfolio() {
           ))}
           <button className="cp-show-more" onClick={() => setShowAll(!showAll)}>
             {showAll ? (
-              <><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 9L1 4h10L6 9z" fill="currentColor"/></svg> show less</>
+              <><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 3l5 5H1l5-5z" fill="currentColor"/></svg> show less</>
             ) : (
-              <><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 3l5 5H1l5-5z" fill="currentColor"/></svg> show more</>
+              <><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 9L1 4h10L6 9z" fill="currentColor"/></svg> show more</>
             )}
           </button>
         </section>
+
+        {/* Contact */}
+        <div className="cp-contact">
+          <span className="cp-project-name">contact</span>
+          <span className="cp-project-desc cp-contact-sep">—</span>
+          <span
+            className="cp-project-desc cp-contact-mail"
+            onClick={() => {
+              navigator.clipboard.writeText("ashishlukka2005@gmail.com");
+              const el = document.getElementById("cp-copied-toast");
+              el.classList.add("cp-toast-show");
+              setTimeout(() => el.classList.remove("cp-toast-show"), 2000);
+            }}
+          >ashishlukka2005@gmail.com</span>
+          <span id="cp-copied-toast" className="cp-copied-toast">gmail copied.</span>
+        </div>
       </main>
     </div>
   );
