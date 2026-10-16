@@ -7,8 +7,15 @@
     <meta name="description" content="Ashish Lukka — information technology student and web developer. Projects, experience, and contact." />
     <title>Ashish Lukka</title>
     <link rel="stylesheet" href="styles.css" />
+    <script>
+      try {
+        var t = localStorage.getItem("theme");
+        if (t) document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {}
+    </script>
   </head>
   <body id="top">
+    <button class="cp-theme-toggle" id="cp-theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle theme">&#127744;</button>
     <div class="cp-page">
       <aside class="cp-sidebar">
         <a href="#top" class="cp-name">ashish lukka</a>
@@ -20,7 +27,7 @@
         </nav>
 
         <div class="cp-sidebar-links">
-          <a href="assets/Ashish_s_Resume.pdf" target="_blank" rel="noopener noreferrer">resume</a>
+          <a href="assets/ASHISH_LUKKA.pdf" target="_blank" rel="noopener noreferrer">resume</a>
           <a href="https://www.linkedin.com/in/ashish-lukka/" target="_blank" rel="noopener noreferrer">linkedin</a>
           <a href="https://github.com/ashishlukka1" target="_blank" rel="noopener noreferrer">github</a>
         </div>
@@ -43,12 +50,23 @@
         <!-- Experience -->
         <section id="experience" class="cp-section">
           <div class="cp-section-label">experience</div>
-          <div class="cp-exp-item">
-            <div class="cp-exp-row">
-              <span class="cp-exp-role">full stack developer intern</span>
-              <span class="cp-exp-time">jun 2025 &ndash; jul 2025</span>
+          <div class="cp-timeline">
+            <div class="cp-timeline-item">
+              <span class="cp-timeline-dot" aria-hidden="true"></span>
+              <div class="cp-exp-row">
+                <span class="cp-exp-role">get (graduate engineer trainee)</span>
+                <span class="cp-exp-time">upcoming</span>
+              </div>
+              <div class="cp-exp-place"><a href="https://www.highradius.com/" target="_blank" rel="noopener noreferrer">highradius</a></div>
             </div>
-            <div class="cp-exp-place"><a href="https://www.olivecrypto.com/" target="_blank" rel="noopener noreferrer">olive crypto systems</a></div>
+            <div class="cp-timeline-item cp-timeline-done">
+              <span class="cp-timeline-dot" aria-hidden="true"></span>
+              <div class="cp-exp-row">
+                <span class="cp-exp-role">full stack developer intern</span>
+                <span class="cp-exp-time">jun 2025 &ndash; jul 2025</span>
+              </div>
+              <div class="cp-exp-place"><a href="https://www.olivecrypto.com/" target="_blank" rel="noopener noreferrer">olive crypto systems</a></div>
+            </div>
           </div>
         </section>
 
@@ -115,7 +133,7 @@
         <div class="cp-contact">
           <span class="cp-contact-label">contact</span>
           <span class="cp-contact-sep">&mdash;</span>
-          <span class="cp-contact-mail" id="cp-mail" role="button" tabindex="0">ashishlukka2005@gmail.com</span>
+          <a class="cp-contact-mail" id="cp-mail" href="mailto:ashishlukka2005@gmail.com">ashishlukka2005@gmail.com</a>
           <span class="cp-copied-toast" id="cp-copied-toast">gmail copied.</span>
         </div>
       </main>
@@ -131,6 +149,7 @@
         <div class="cp-modal-head">
           <h2 class="cp-modal-title" id="cp-modal-title"></h2>
           <a class="cp-modal-github" id="cp-modal-github" href="#" target="_blank" rel="noopener noreferrer">github</a>
+          <p class="cp-modal-desc" id="cp-modal-desc"></p>
         </div>
         <div class="cp-modal-gallery" id="cp-modal-gallery"></div>
       </div>

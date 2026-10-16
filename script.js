@@ -3,6 +3,28 @@
 
   var sections = ["about", "experience", "projects"];
 
+  /* ── Theme toggle ── */
+  var themeToggle = document.getElementById("cp-theme-toggle");
+  var rootEl = document.documentElement;
+
+  function applyTheme(theme) {
+    if (theme === "dark") {
+      rootEl.setAttribute("data-theme", "dark");
+    } else {
+      rootEl.removeAttribute("data-theme");
+    }
+  }
+
+  if (themeToggle) {
+    themeToggle.addEventListener("click", function () {
+      var next = rootEl.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      applyTheme(next);
+      try {
+        localStorage.setItem("theme", next);
+      } catch (e) {}
+    });
+  }
+
   /* ── Show more / less ── */
   var showMoreBtn = document.getElementById("cp-show-more");
   var moreWrap = document.querySelector(".cp-project-more");
@@ -61,7 +83,10 @@
   }
 
   if (mail) {
-    mail.addEventListener("click", copyEmail);
+    mail.addEventListener("click", function (e) {
+      e.preventDefault();
+      copyEmail();
+    });
     mail.addEventListener("keydown", function (e) {
       if (e.key === "Enter" || e.key === " ") {
         e.preventDefault();
@@ -74,6 +99,7 @@
   var modal = document.getElementById("cp-modal");
   var modalTitle = document.getElementById("cp-modal-title");
   var modalGithub = document.getElementById("cp-modal-github");
+  var modalDesc = document.getElementById("cp-modal-desc");
   var modalGallery = document.getElementById("cp-modal-gallery");
   var lastFocused;
 
@@ -84,6 +110,10 @@
 
     lastFocused = document.activeElement;
     modalTitle.textContent = card.getAttribute("data-title") || "";
+    var descEl = card.querySelector(".cp-project-desc");
+    if (modalDesc) {
+      modalDesc.textContent = descEl ? descEl.textContent.trim() : "";
+    }
     var repo = card.getAttribute("data-github");
     if (repo) {
       modalGithub.style.display = "";
