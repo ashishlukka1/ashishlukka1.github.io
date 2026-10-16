@@ -2,20 +2,254 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-      <link rel="icon" class="b-icon" href="https://i.postimg.cc/BQg052gn/1000-F-339573869-Cbmzxqg-BOfs-LQRo-VZhs-Cm-D8-T3y-Wqt-Q9w-1-removebg-preview-1-1.png" />
+    <link rel="icon" href="https://i.postimg.cc/BQg052gn/1000-F-339573869-Cbmzxqg-BOfs-LQRo-VZhs-Cm-D8-T3y-Wqt-Q9w-1-removebg-preview-1-1.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Ashish Lukka — information technology student and web developer. Projects, experience, and contact." />
     <title>Ashish Lukka</title>
-    <script>
-      const redirect = sessionStorage.getItem("redirect");
-      if (redirect) {
-        sessionStorage.removeItem("redirect");
-        window.history.replaceState(null, "", redirect);
-      }
-    </script>
-    <script type="module" crossorigin src="/assets/index-BhjZ9gGc.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-C21Uop5_.css">
+    <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
-    <div id="root"></div>
+  <body id="top">
+    <div class="cp-page">
+      <aside class="cp-sidebar">
+        <a href="#top" class="cp-name">ashish lukka</a>
+
+        <nav class="cp-nav">
+          <a href="#about" data-nav="about">about</a>
+          <a href="#experience" data-nav="experience">experience</a>
+          <a href="#projects" data-nav="projects">projects</a>
+          <a href="assets/Ashish_s_Resume.pdf" target="_blank" rel="noopener noreferrer">resume <span class="cp-arrow">&#8599;</span></a>
+        </nav>
+
+        <div class="cp-sidebar-links">
+          <a href="https://www.linkedin.com/in/ashish-lukka/" target="_blank" rel="noopener noreferrer">linkedin</a>
+          <a href="https://github.com/ashishlukka1" target="_blank" rel="noopener noreferrer">github</a>
+        </div>
+      </aside>
+
+      <main class="cp-content">
+        <!-- About -->
+        <section id="about" class="cp-section cp-about">
+          <div class="cp-section-label">about</div>
+          <p>pre-final year information technology student at vnrvjiet, hyderabad.</p>
+          <p>currently exploring machine-learning and cloud. building things on the web.</p>
+          <div class="cp-tags">
+            <span>java</span>
+            <span>dsa</span>
+            <span>MERN</span>
+            <span>ml/dl</span>
+          </div>
+        </section>
+
+        <!-- Experience -->
+        <section id="experience" class="cp-section">
+          <div class="cp-section-label">experience</div>
+          <div class="cp-exp-item">
+            <div class="cp-exp-row">
+              <span class="cp-exp-role">full stack developer intern</span>
+              <span class="cp-exp-time">jun 2025 &ndash; jul 2025</span>
+            </div>
+            <div class="cp-exp-place">olive crypto systems</div>
+          </div>
+        </section>
+
+        <!-- Projects -->
+        <section id="projects" class="cp-section cp-section-projects">
+          <div class="cp-section-label">projects</div>
+          <div class="cp-project-list">
+            <!-- 1 -->
+            <a class="cp-project-item" href="https://github.com/Janjirala-Srikar/Lora_Whisper" target="_blank" rel="noopener noreferrer">
+              <div class="cp-project-row">
+                <div class="cp-project-name">parameter efficient domain adaptation on whisper</div>
+                <div class="cp-project-links"><span class="cp-project-link">github <span class="cp-arrow">&#8599;</span></span></div>
+              </div>
+              <div class="cp-project-desc">whisper ASR fine-tuned with LoRA using synthetic speech data for ASR domain adaptation &mdash; 29.3% relative WER reduction on weather, 19.9% on music, 4.4% on sports</div>
+            </a>
+            <!-- 2 -->
+            <a class="cp-project-item" href="https://github.com/ashishlukka1/job-queue-engine" target="_blank" rel="noopener noreferrer">
+              <div class="cp-project-row">
+                <div class="cp-project-name">job queue engine</div>
+                <div class="cp-project-links"><span class="cp-project-link">github <span class="cp-arrow">&#8599;</span></span></div>
+              </div>
+              <div class="cp-project-desc">built a distributed job queue with lease-based locking, exponential backoff, and dead-letter recovery &mdash; crash-safe with zero double-processing under load</div>
+            </a>
+            <!-- 3 -->
+            <div class="cp-project-item" data-gallery="olive" data-title="olive skill test" data-github="https://github.com/ashishlukka1/skill-caravan" role="button" tabindex="0">
+              <div class="cp-project-row">
+                <div class="cp-project-name">olive skill test</div>
+                <div class="cp-project-links"><span class="cp-project-link">screenshots <span class="cp-arrow">&#8599;</span></span></div>
+              </div>
+              <div class="cp-project-desc">internal training platform built during internship at olive crypto systems</div>
+            </div>
+            <!-- 4 -->
+            <a class="cp-project-item" href="https://github.com/ashishlukka1/sales-ticket" target="_blank" rel="noopener noreferrer">
+              <div class="cp-project-row">
+                <div class="cp-project-name">sales ticket</div>
+                <div class="cp-project-links"><span class="cp-project-link">github <span class="cp-arrow">&#8599;</span></span></div>
+              </div>
+              <div class="cp-project-desc">turns support tickets into revenue intelligence &mdash; an AI platform that extracts structured signals from Zendesk conversations using deterministic classification and graph-based memory, paired with a RAG-based copilot for context-aware, conversational insight.</div>
+            </a>
+
+            <div class="cp-project-more" hidden>
+              <!-- 5 -->
+              <a class="cp-project-item" href="https://github.com/ashishlukka1/lab-report-agent" target="_blank" rel="noopener noreferrer">
+                <div class="cp-project-row">
+                  <div class="cp-project-name">quantera</div>
+                  <div class="cp-project-links"><span class="cp-project-link">github <span class="cp-arrow">&#8599;</span></span></div>
+                </div>
+                <div class="cp-project-desc">ocr + llm pipeline that extracts structured data from medical reports and answers questions via a rag-powered conversational assistant</div>
+              </a>
+              <!-- 6 -->
+              <div class="cp-project-item" data-gallery="library" data-title="digital academic library" data-github="https://github.com/ashishlukka1/Digital-Academic-Library" role="button" tabindex="0">
+                <div class="cp-project-row">
+                  <div class="cp-project-name">digital academic library</div>
+                  <div class="cp-project-links"><span class="cp-project-link">screenshots <span class="cp-arrow">&#8599;</span></span></div>
+                </div>
+                <div class="cp-project-desc">centralized mern platform for academic resource sharing with role-based access, discussion forums, book booking, and a gemini-powered chatbot &mdash; won 1st at webathon 3.0</div>
+              </div>
+              <!-- 7 -->
+              <div class="cp-project-item" data-gallery="draft" data-title="draft" data-github="https://github.com/ashishlukka1/draft-blogapp" role="button" tabindex="0">
+                <div class="cp-project-row">
+                  <div class="cp-project-name">draft</div>
+                  <div class="cp-project-links"><span class="cp-project-link">screenshots <span class="cp-arrow">&#8599;</span></span></div>
+                </div>
+                <div class="cp-project-desc">full mern blog platform with role-based access (admin/author/user), clerk auth, and a rich text editor</div>
+              </div>
+              <!-- 8 -->
+              <div class="cp-project-item" data-gallery="lumora" data-title="lumora" data-github="https://github.com/ashishlukka1/lumora" role="button" tabindex="0">
+                <div class="cp-project-row">
+                  <div class="cp-project-name">lumora</div>
+                  <div class="cp-project-links"><span class="cp-project-link">screenshots <span class="cp-arrow">&#8599;</span></span></div>
+                </div>
+                <div class="cp-project-desc">web platform giving college students clerk-authenticated access to curated mern stack learning videos</div>
+              </div>
+              <!-- 9 -->
+              <div class="cp-project-item" data-gallery="seminar" data-title="seminar hall" data-github="https://github.com/ashishlukka1/seminar-hall" role="button" tabindex="0">
+                <div class="cp-project-row">
+                  <div class="cp-project-name">seminar hall</div>
+                  <div class="cp-project-links"><span class="cp-project-link">screenshots <span class="cp-arrow">&#8599;</span></span></div>
+                </div>
+                <div class="cp-project-desc">web app for booking seminar halls at vnrvjiet</div>
+              </div>
+            </div>
+          </div>
+
+          <button class="cp-show-more" id="cp-show-more" aria-expanded="false">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path class="cp-show-more-icon" d="M6 9L1 4h10L6 9z" fill="currentColor"/></svg> <span>show more</span>
+          </button>
+        </section>
+
+        <!-- Contact -->
+        <div class="cp-contact">
+          <span class="cp-contact-label">contact</span>
+          <span class="cp-contact-sep">&mdash;</span>
+          <span class="cp-contact-mail" id="cp-mail" role="button" tabindex="0">ashishlukka2005@gmail.com</span>
+          <span class="cp-copied-toast" id="cp-copied-toast">gmail copied.</span>
+        </div>
+      </main>
+    </div>
+
+    <!-- Gallery Modal -->
+    <div class="cp-modal" id="cp-modal" aria-hidden="true">
+      <div class="cp-modal-backdrop" data-modal-close></div>
+      <div class="cp-modal-panel" role="dialog" aria-modal="true" aria-labelledby="cp-modal-title">
+        <button class="cp-modal-close" data-modal-close aria-label="Close">&times;</button>
+        <div class="cp-modal-head">
+          <h2 class="cp-modal-title" id="cp-modal-title"></h2>
+          <a class="cp-modal-github" id="cp-modal-github" href="#" target="_blank" rel="noopener noreferrer">github repo <span class="cp-arrow">&#8599;</span></a>
+        </div>
+        <div class="cp-modal-gallery" id="cp-modal-gallery"></div>
+      </div>
+    </div>
+
+    <!-- Gallery templates -->
+    <template id="gallery-olive">
+      <figure class="cp-fig"><img src="assets/about/ifeelgood.webp" alt="Olive Crypto Systems Image-2" loading="lazy" decoding="async" /><figcaption>Olive Crypto Systems Image-2</figcaption></figure>
+      <figure class="cp-fig"><img src="assets/olive/login.webp" alt="Login" loading="lazy" decoding="async" /><figcaption>Login</figcaption></figure>
+      <figure class="cp-fig"><img src="assets/olive/register.webp" alt="Register" loading="lazy" decoding="async" /><figcaption>Register</figcaption></figure>
+      <figure class="cp-fig"><img src="assets/olive/userdash.webp" alt="User Dashboard" loading="lazy" decoding="async" /><figcaption>User Dashboard</figcaption></figure>
+      <figure class="cp-fig"><img src="assets/olive/profile.webp" alt="Profile Settings" loading="lazy" decoding="async" /><figcaption>Profile Settings</figcaption></figure>
+      <figure class="cp-fig"><img src="assets/olive/coursesuser.webp" alt="All Courses" loading="lazy" decoding="async" /><figcaption>All Courses</figcaption></figure>
+      <figure class="cp-fig"><img src="assets/olive/mycoursesuser.webp" alt="My Courses" loading="lazy" decoding="async" /><figcaption>My Courses</figcaption></figure>
+      <figure class="cp-fig"><img src="assets/olive/coursedetailsandunits.webp" alt="Course Details and Units Content" loading="lazy" decoding="async" /><figcaption>Course Details and Units Content</figcaption></figure>
+      <figure class="cp-fig"><img src="assets/olive/assessment.webp" alt="Assessment Page — for each unit, chosen randomly from the set of assessments available" loading="lazy" decoding="async" /><figcaption>Assessment Page — for each unit, chosen randomly from the set of assessments available</figcaption></figure>
+      <figure class="cp-fig"><img src="assets/olive/assginmentblocked.webp" alt="Assessment Blocked — if the user switches the tab 3 times during the assessment" loading="lazy" decoding="async" /><figcaption>Assessment Blocked — if the user switches the tab 3 times during the assessment</figcaption></figure>
+      <figure class="cp-fig"><img src="assets/olive/assignmentreview.webp" alt="Progress Tracking and Assignment Review (for each unit)" loading="lazy" decoding="async" /><figcaption>Progress Tracking and Assignment Review (for each unit)</figcaption></figure>
+      <figure class="cp-fig"><img src="assets/olive/coursedetailsandunits.webp" alt="Certificate Generation — after completing all units and assessments" loading="lazy" decoding="async" /><figcaption>Certificate Generation — after completing all units and assessments</figcaption></figure>
+      <figure class="cp-fig"><img src="assets/olive/mycertiificatesuser.webp" alt="My Certificates — user can download the certificate" loading="lazy" decoding="async" /><figcaption>My Certificates — user can download the certificate</figcaption></figure>
+      <figure class="cp-fig"><img src="assets/olive/checkerdashboard.webp" alt="Checker Dashboard" loading="lazy" decoding="async" /><figcaption>Checker Dashboard</figcaption></figure>
+      <figure class="cp-fig"><img src="assets/olive/checkercoursereview.webp" alt="Course Review — checker can review the course content before it is made public" loading="lazy" decoding="async" /><figcaption>Course Review — checker can review the course content before it is made public</figcaption></figure>
+      <figure class="cp-fig"><img src="assets/olive/admindasboard.webp" alt="Admin Navigation Bar with all the options" loading="lazy" decoding="async" /><figcaption>Admin Navigation Bar with all the options</figcaption></figure>
+      <figure class="cp-fig"><img src="assets/olive/addcourse.webp" alt="Adding a Course — admin can add a course with multiple units and assessments" loading="lazy" decoding="async" /><figcaption>Adding a Course — admin can add a course with multiple units and assessments</figcaption></figure>
+      <figure class="cp-fig"><img src="assets/olive/editcoursetable.webp" alt="Edit Course Table" loading="lazy" decoding="async" /><figcaption>Edit Course Table</figcaption></figure>
+      <figure class="cp-fig"><img src="assets/olive/editcoursebyid.webp" alt="Edit an Existing Course by ID" loading="lazy" decoding="async" /><figcaption>Edit an Existing Course by ID</figcaption></figure>
+      <figure class="cp-fig"><img src="assets/olive/empstatus.webp" alt="Employee Status — admin can view each employee's progress" loading="lazy" decoding="async" /><figcaption>Employee Status — admin can view each employee's progress</figcaption></figure>
+      <figure class="cp-fig"><img src="assets/olive/certificate.webp" alt="Certificate Template — admin can set the template used for generating certificates" loading="lazy" decoding="async" /><figcaption>Certificate Template — admin can set the template used for generating certificates</figcaption></figure>
+    </template>
+
+    <template id="gallery-library">
+      <figure class="cp-fig"><img src="assets/library/landing page.webp" alt="Landing Page" loading="lazy" decoding="async" /><figcaption>Landing Page</figcaption></figure>
+      <figure class="cp-fig"><img src="assets/library/guest.webp" alt="Guest search to check book availability without login" loading="lazy" decoding="async" /><figcaption>Guest search to check book availability without login</figcaption></figure>
+      <figure class="cp-fig"><img src="assets/library/signin.webp" alt="Login page with Google authentication" loading="lazy" decoding="async" /><figcaption>Login page with Google authentication</figcaption></figure>
+      <figure class="cp-fig"><img src="assets/library/signup.webp" alt="Signup page with Google authentication and role selection" loading="lazy" decoding="async" /><figcaption>Signup page with Google authentication and role selection</figcaption></figure>
+      <figure class="cp-fig"><img src="assets/library/chat bot aaa.webp" alt="Gemini AI chatbot for answering student queries" loading="lazy" decoding="async" /><figcaption>Gemini AI chatbot for answering student queries</figcaption></figure>
+      <figure class="cp-fig"><img src="assets/library/student login page.webp" alt="Student landing page after login" loading="lazy" decoding="async" /><figcaption>Student landing page after login</figcaption></figure>
+      <figure class="cp-fig"><img src="assets/library/student dash.webp" alt="Student dashboard with book search" loading="lazy" decoding="async" /><figcaption>Student dashboard with book search</figcaption></figure>
+      <figure class="cp-fig"><img src="assets/library/course materials display.webp" alt="View course materials and book details with notes" loading="lazy" decoding="async" /><figcaption>View course materials and book details with notes</figcaption></figure>
+      <figure class="cp-fig"><img src="assets/library/request a book -student.webp" alt="Request a book from the library if not available" loading="lazy" decoding="async" /><figcaption>Request a book from the library if not available</figcaption></figure>
+      <figure class="cp-fig"><img src="assets/library/offline book service.webp" alt="Offline book service for students" loading="lazy" decoding="async" /><figcaption>Offline book service for students</figcaption></figure>
+      <figure class="cp-fig"><img src="assets/library/book confirmation.webp" alt="Time confirmation for taking the book from the library" loading="lazy" decoding="async" /><figcaption>Time confirmation for taking the book from the library</figcaption></figure>
+      <figure class="cp-fig"><img src="assets/library/confirmation on book with noti on mobile.webp" alt="Book confirmation with Twilio SMS notification" loading="lazy" decoding="async" /><figcaption>Book confirmation with Twilio SMS notification</figcaption></figure>
+      <figure class="cp-fig"><img src="assets/library/discusion forums.webp" alt="Discussion forums for real-time communication between students with similar interests" loading="lazy" decoding="async" /><figcaption>Discussion forums for real-time communication between students with similar interests</figcaption></figure>
+      <figure class="cp-fig"><img src="assets/library/join availabe or create new.webp" alt="Join an available forum or create a new one" loading="lazy" decoding="async" /><figcaption>Join an available forum or create a new one</figcaption></figure>
+      <figure class="cp-fig"><img src="assets/library/create a new chat room 2.webp" alt="New chat room creation" loading="lazy" decoding="async" /><figcaption>New chat room creation</figcaption></figure>
+      <figure class="cp-fig"><img src="assets/library/chat room.webp" alt="Chat room" loading="lazy" decoding="async" /><figcaption>Chat room</figcaption></figure>
+      <figure class="cp-fig"><img src="assets/library/chat room moderation.webp" alt="Chat room moderation — delete the room if inappropriate messages are sent" loading="lazy" decoding="async" /><figcaption>Chat room moderation — delete the room if inappropriate messages are sent</figcaption></figure>
+      <figure class="cp-fig"><img src="assets/library/faculty login page.webp" alt="Faculty landing page after login" loading="lazy" decoding="async" /><figcaption>Faculty landing page after login</figcaption></figure>
+      <figure class="cp-fig"><img src="assets/library/requested books -faculty.webp" alt="List of books requested by students" loading="lazy" decoding="async" /><figcaption>List of books requested by students</figcaption></figure>
+      <figure class="cp-fig"><img src="assets/library/publish book -faculty.webp" alt="Publish the book to the digital library based on the request" loading="lazy" decoding="async" /><figcaption>Publish the book to the digital library based on the request</figcaption></figure>
+    </template>
+
+    <template id="gallery-draft">
+      <figure class="cp-fig"><img src="assets/draft/landing page.webp" alt="Landing Page" loading="lazy" decoding="async" /><figcaption>Landing Page</figcaption></figure>
+      <figure class="cp-fig"><img src="assets/draft/login.webp" alt="Login Page" loading="lazy" decoding="async" /><figcaption>Login Page</figcaption></figure>
+      <figure class="cp-fig"><img src="assets/draft/signup.webp" alt="Sign Up Page" loading="lazy" decoding="async" /><figcaption>Sign Up Page</figcaption></figure>
+      <figure class="cp-fig"><img src="assets/draft/select role.webp" alt="Sign Up Role Selection" loading="lazy" decoding="async" /><figcaption>Sign Up Role Selection</figcaption></figure>
+      <figure class="cp-fig"><img src="assets/draft/user dash.webp" alt="User Dashboard — display of all articles with search and filter" loading="lazy" decoding="async" /><figcaption>User Dashboard — display of all articles with search and filter</figcaption></figure>
+      <figure class="cp-fig"><img src="assets/draft/blog user.webp" alt="View article and comment on articles" loading="lazy" decoding="async" /><figcaption>View article and comment on articles</figcaption></figure>
+      <figure class="cp-fig"><img src="assets/draft/author dash.webp" alt="Author Dashboard — all user features plus Add Article" loading="lazy" decoding="async" /><figcaption>Author Dashboard — all user features plus Add Article</figcaption></figure>
+      <figure class="cp-fig"><img src="assets/draft/edit article author.webp" alt="Add Article" loading="lazy" decoding="async" /><figcaption>Add Article</figcaption></figure>
+      <figure class="cp-fig"><img src="assets/draft/edit article.webp" alt="Edit option on published articles by the author" loading="lazy" decoding="async" /><figcaption>Edit option on published articles by the author</figcaption></figure>
+      <figure class="cp-fig"><img src="assets/draft/edit article form.webp" alt="Edit published articles" loading="lazy" decoding="async" /><figcaption>Edit published articles</figcaption></figure>
+      <figure class="cp-fig"><img src="assets/draft/admin dash.webp" alt="Admin Dashboard — option to block users" loading="lazy" decoding="async" /><figcaption>Admin Dashboard — option to block users</figcaption></figure>
+      <figure class="cp-fig"><img src="assets/draft/blocked by admin.webp" alt="User message when blocked by admin" loading="lazy" decoding="async" /><figcaption>User message when blocked by admin</figcaption></figure>
+    </template>
+
+    <template id="gallery-lumora">
+      <figure class="cp-fig"><img src="assets/lumora/landing page.webp" alt="Landing Page" loading="lazy" decoding="async" /><figcaption>Landing Page</figcaption></figure>
+      <figure class="cp-fig"><img src="assets/lumora/login.webp" alt="Login page with Clerk authentication" loading="lazy" decoding="async" /><figcaption>Login page with Clerk authentication</figcaption></figure>
+      <figure class="cp-fig"><img src="assets/lumora/content.webp" alt="Lecture content organized by modules" loading="lazy" decoding="async" /><figcaption>Lecture content organized by modules</figcaption></figure>
+      <figure class="cp-fig"><img src="assets/lumora/watch.webp" alt="Video lecture playback interface" loading="lazy" decoding="async" /><figcaption>Video lecture playback interface</figcaption></figure>
+    </template>
+
+    <template id="gallery-seminar">
+      <figure class="cp-fig"><img src="assets/seminar/landing.webp" alt="Landing Page" loading="lazy" decoding="async" /><figcaption>Landing Page</figcaption></figure>
+      <figure class="cp-fig"><img src="assets/seminar/login page.webp" alt="Login page for all users" loading="lazy" decoding="async" /><figcaption>Login page for all users</figcaption></figure>
+      <figure class="cp-fig"><img src="assets/seminar/forgot password.webp" alt="Forgot Password Page" loading="lazy" decoding="async" /><figcaption>Forgot Password Page</figcaption></figure>
+      <figure class="cp-fig"><img src="assets/seminar/club registration.webp" alt="Club registration page" loading="lazy" decoding="async" /><figcaption>Club registration page</figcaption></figure>
+      <figure class="cp-fig"><img src="assets/seminar/club reg-1.webp" alt="Club registration step 1" loading="lazy" decoding="async" /><figcaption>Club registration step 1</figcaption></figure>
+      <figure class="cp-fig"><img src="assets/seminar/club reg-2.webp" alt="Club registration step 2" loading="lazy" decoding="async" /><figcaption>Club registration step 2</figcaption></figure>
+      <figure class="cp-fig"><img src="assets/seminar/club reg-3.webp" alt="Club registration step 3" loading="lazy" decoding="async" /><figcaption>Club registration step 3</figcaption></figure>
+      <figure class="cp-fig"><img src="assets/seminar/user dash-1.webp" alt="User dashboard — display of all seminar halls" loading="lazy" decoding="async" /><figcaption>User dashboard — display of all seminar halls</figcaption></figure>
+      <figure class="cp-fig"><img src="assets/seminar/choose date -user.webp" alt="Detailed view of a seminar hall — choose date and time slot" loading="lazy" decoding="async" /><figcaption>Detailed view of a seminar hall — choose date and time slot</figcaption></figure>
+      <figure class="cp-fig"><img src="assets/seminar/time slot -usre dash.webp" alt="Fill the details and time slot to book the hall" loading="lazy" decoding="async" /><figcaption>Fill the details and time slot to book the hall</figcaption></figure>
+      <figure class="cp-fig"><img src="assets/seminar/user -managebookings.webp" alt="User manage bookings — view and cancel bookings" loading="lazy" decoding="async" /><figcaption>User manage bookings — view and cancel bookings</figcaption></figure>
+      <figure class="cp-fig"><img src="assets/seminar/user- settings.webp" alt="User settings — update profile and password" loading="lazy" decoding="async" /><figcaption>User settings — update profile and password</figcaption></figure>
+      <figure class="cp-fig"><img src="assets/seminar/admin dash.webp" alt="Admin dashboard — overview of bookings and halls" loading="lazy" decoding="async" /><figcaption>Admin dashboard — overview of bookings and halls</figcaption></figure>
+      <figure class="cp-fig"><img src="assets/seminar/admin booking calender.webp" alt="Calendar view of all bookings with filter by hall name" loading="lazy" decoding="async" /><figcaption>Calendar view of all bookings with filter by hall name</figcaption></figure>
+      <figure class="cp-fig"><img src="assets/seminar/admin - booking req.webp" alt="Seminar hall booking requests with approve/reject" loading="lazy" decoding="async" /><figcaption>Seminar hall booking requests with approve/reject</figcaption></figure>
+      <figure class="cp-fig"><img src="assets/seminar/admin club req.webp" alt="Club registration requests with approve/reject" loading="lazy" decoding="async" /><figcaption>Club registration requests with approve/reject</figcaption></figure>
+    </template>
+
+    <script src="script.js"></script>
   </body>
 </html>
