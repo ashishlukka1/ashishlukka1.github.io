@@ -5,15 +5,43 @@
 
 :root {
   --cp-bg: #ffffff;
+  --cp-surface: #ffffff;
   --cp-text: rgb(40, 40, 40);
   --cp-dim: rgb(120, 120, 120);
   --cp-bright: rgb(10, 10, 10);
   --cp-accent: rgb(90, 90, 90);
   --cp-border: rgb(228, 228, 228);
-  --cp-tag-bg: rgb(240, 240, 255);
-  --cp-tag-text: rgb(90, 90, 210);
+  --cp-hover: rgb(247, 247, 250);
+  --cp-close-hover: rgb(245, 245, 247);
+  --cp-backdrop: rgba(255, 255, 255, 0.85);
+  --cp-contact: rgb(60, 60, 60);
+  --cp-caption: rgb(70, 70, 70);
+  --cp-tag-bg: rgb(238, 242, 253);
+  --cp-tag-text: rgb(45, 80, 216);
   --cp-link: #0000ee;
   --cp-font: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+:root[data-theme="dark"] {
+  --cp-bg: #1c1c1c;
+  --cp-surface: #242424;
+  --cp-text: rgb(224, 224, 224);
+  --cp-dim: rgb(150, 150, 150);
+  --cp-bright: rgb(255, 255, 255);
+  --cp-accent: rgb(120, 120, 120);
+  --cp-border: rgb(58, 58, 58);
+  --cp-hover: rgb(42, 42, 42);
+  --cp-close-hover: rgb(50, 50, 50);
+  --cp-backdrop: rgba(0, 0, 0, 0.65);
+  --cp-contact: rgb(200, 200, 200);
+  --cp-caption: rgb(175, 175, 175);
+  --cp-tag-bg: rgb(38, 46, 82);
+  --cp-tag-text: rgb(165, 182, 255);
+  --cp-link: #8fb0ff;
+}
+
+:root[data-theme="dark"] .cp-project-desc {
+  color: rgb(190, 190, 190);
 }
 
 * {
@@ -46,6 +74,37 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+/* ── Theme toggle ── */
+.cp-theme-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 900;
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  font-size: 20px;
+  line-height: 1;
+  background: var(--cp-surface);
+  border: 1px solid var(--cp-border);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 300ms ease, border-color 120ms ease, background 120ms ease;
+}
+
+.cp-theme-toggle:hover {
+  transform: rotate(180deg);
+  border-color: var(--cp-accent);
+}
+
+.cp-theme-toggle:focus-visible {
+  outline: 2px solid var(--cp-tag-text);
+  outline-offset: 2px;
 }
 
 /* ── Sidebar ── */
@@ -147,17 +206,51 @@ a {
 }
 
 .cp-tags span {
-  background: rgb(238, 242, 253);
-  color: rgb(45, 80, 216);
-  padding: 0.3rem 1.15rem;
+  background: var(--cp-tag-bg);
+  color: var(--cp-tag-text);
+  padding: 0.15rem 1.1rem;
   font-size: 15px;
   font-weight: 500;
   border-radius: 999px;
 }
 
-/* ── Experience ── */
-.cp-exp-item {
-  margin-bottom: 2rem;
+/* ── Experience timeline ── */
+.cp-timeline {
+  position: relative;
+}
+
+.cp-timeline-item {
+  position: relative;
+  padding-left: 1.75rem;
+  padding-bottom: 2.25rem;
+}
+
+.cp-timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+.cp-timeline-item::before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 11px;
+  bottom: -2.25rem;
+  width: 1px;
+  background: var(--cp-border);
+}
+
+.cp-timeline-item:last-child::before {
+  display: none;
+}
+
+.cp-timeline-dot {
+  position: absolute;
+  left: 0;
+  top: 11px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--cp-link);
 }
 
 .cp-exp-row {
@@ -182,6 +275,10 @@ a {
   margin: 0.2rem 0 0.6rem;
 }
 
+.cp-timeline-done .cp-timeline-dot {
+  background: var(--cp-dim);
+}
+
 /* ── Projects ── */
 .cp-project-item {
   display: block;
@@ -194,7 +291,7 @@ a {
 
 .cp-project-item:hover {
   transform: translateX(2px);
-  background: rgb(247, 247, 250);
+  background: var(--cp-hover);
 }
 
 .cp-project-item[data-gallery]:focus-visible {
@@ -264,14 +361,13 @@ a {
 }
 
 .cp-contact-mail {
-  cursor: pointer;
-  color: rgb(60, 60, 60);
+  color: var(--cp-link);
   font-size: 17px;
-  transition: color 120ms ease;
+  text-decoration: none;
 }
 
 .cp-contact-mail:hover {
-  color: var(--cp-bright);
+  text-decoration: underline;
 }
 
 .cp-copied-toast {
@@ -280,10 +376,10 @@ a {
   right: 1.2rem;
   background: var(--cp-tag-bg);
   color: var(--cp-tag-text);
-  border: 1px solid rgba(90, 90, 210, 0.25);
   font-size: 15px;
-  padding: 0.4rem 1rem;
-  border-radius: 18px;
+  font-weight: 500;
+  padding: 0.3rem 1.15rem;
+  border-radius: 999px;
   opacity: 0;
   transform: translateY(-6px);
   transition: opacity 150ms ease, transform 150ms ease;
@@ -311,7 +407,7 @@ a {
 .cp-modal-backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(255, 255, 255, 0.85);
+  background: var(--cp-backdrop);
   backdrop-filter: blur(4px);
 }
 
@@ -322,7 +418,7 @@ a {
   left: 50%;
   transform: translateX(-50%);
   width: min(680px, 92vw);
-  background: #fff;
+  background: var(--cp-surface);
   border: 1px solid var(--cp-border);
   border-radius: 8px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
@@ -343,7 +439,7 @@ a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: #fff;
+  background: var(--cp-surface);
   border: 1px solid var(--cp-border);
   border-radius: 50%;
   width: 36px;
@@ -357,7 +453,7 @@ a {
 .cp-modal-close:hover {
   color: var(--cp-bright);
   border-color: var(--cp-accent);
-  background: rgb(245, 245, 247);
+  background: var(--cp-close-hover);
 }
 
 .cp-modal-close:focus-visible {
@@ -386,12 +482,22 @@ a {
   display: inline-flex;
   align-items: center;
   gap: 0.25rem;
-  border-bottom: 1px solid rgba(90, 90, 210, 0.3);
+  border-bottom: 1px solid currentColor;
   padding-bottom: 1px;
 }
 
 .cp-modal-github:hover {
   border-bottom-color: var(--cp-tag-text);
+}
+
+.cp-modal-desc {
+  color: var(--cp-dim);
+  font-size: 15px;
+  margin: 1rem 0 0;
+}
+
+:root[data-theme="dark"] .cp-modal-desc {
+  color: rgb(190, 190, 190);
 }
 
 .cp-modal-gallery {
@@ -412,7 +518,7 @@ a {
 }
 
 .cp-fig figcaption {
-  color: rgb(70, 70, 70);
+  color: var(--cp-caption);
   font-size: 13px;
   line-height: 1.5;
   padding: 0.6rem 0 0;
